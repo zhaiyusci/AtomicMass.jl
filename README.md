@@ -13,7 +13,7 @@ To install it, open your Julia RPLE and type
 ]add https://github.com/zhaiyusci/AtomicMass.jl
 ```
 
-	## Usage
+## Usage
 
 There is only one exported function in the package.
 
