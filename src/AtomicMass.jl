@@ -26,8 +26,17 @@ If mass number is unspecified, return the mass of the most abundant species.
 
 # Examples
 ```julia-repl
-julia> bar([1, 2], [1, 2])
-1
+julia> atomicmass("H-2")
+2.01410177812
+
+julia> atomicmass("H2")
+2.01410177812
+
+julia> atomicmass("D")
+2.01410177812
+
+julia> atomicmass("H")
+1.00782503223
 ```
 """
 function atomicmass(s::T) where T<:AbstractString
@@ -37,10 +46,8 @@ function atomicmass(s::T) where T<:AbstractString
         massnumber=match(r"[[:digit:]]{1,3}", s)
         if massnumber !==nothing
             A=parse(Int, massnumber.match)
-            @show name, A
             return _atomicmass(name, A)
         else
-            @show name
             return _atomicmass(name)
         end
     end
