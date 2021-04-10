@@ -2,7 +2,7 @@ module AtomicMass
 using JuliaDB
 
 srcdir= @__DIR__
-pt=load(srcdir + "/atomicmass.db");
+pt=load(srcdir * "/atomicmass.db");
 
 function _atomicmass(s::T) where T<:AbstractString
     filter(x->x.Symbol==s, pt)[1].m
