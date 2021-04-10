@@ -2,3 +2,6 @@ name = "AtomicMass"
 uuid = "2c8f42cb-e0b9-4bc5-96ad-9274ec8d5f21"
 authors = ["Yu Zhai <me@zhaiyusci.net>"]
 version = "0.1.0"
+
+[deps]
+JuliaDB = "a93385a2-3734-596a-9a66-3cfbb77141e6"
