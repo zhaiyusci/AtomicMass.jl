@@ -10,7 +10,7 @@ At present stage, the package has not been added to the Julia Lang registry sinc
 To install it, open your Julia RPLE and type
 
 ```julia
-]add https://github.com/zhaiyusci/AtomicMass.jl
+]add AtomicMass.jl
 ```
 
 ## Usage
