@@ -5,8 +5,6 @@ A small Julia package returns the atomic mass of an isotope.
 
 ## Install
 
-At present stage, the package has not been added to the Julia Lang registry since it is the initial version.
-
 To install it, open your Julia RPLE and type
 
 ```julia
