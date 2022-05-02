@@ -1,11 +1,11 @@
 name = "AtomicMass"
 uuid = "2c8f42cb-e0b9-4bc5-96ad-9274ec8d5f21"
 authors = ["Yu Zhai <me@zhaiyusci.net>"]
-version = "0.1.0"
+version = "0.2.0"
 
 [deps]
-JuliaDB = "a93385a2-3734-596a-9a66-3cfbb77141e6"
+CSV = "336ed68f-0bac-5ca0-87d4-7b16caf5d00b"
+DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
 
 [compat]
 julia = "1.4"
-JuliaDB = "0.13"

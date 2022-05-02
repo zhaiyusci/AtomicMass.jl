@@ -1,26 +1,28 @@
 module AtomicMass
-using JuliaDB
+using DataFrames
+using CSV
 
 srcdir= @__DIR__
-pt=load(srcdir * "/atomicmass.db");
+pt=DataFrame(CSV.File(srcdir * "/atomicmass.csv", 
+                      types=[String, Int, String, String, Int, Float64, Float64]));
 
 function _atomicmass(s::T) where T<:AbstractString
-    filter(x->x.Symbol==s, pt)[1].m
+  parse(Float64, sort(dropmissing(filter(x->x.E==s, pt)), :x_val, rev=true)[1,:].m_val)
 end
 function _atomicmass(s::T1, A::T2) where {T1<:AbstractString , T2<:Integer}
-    filter(x->(x.Symbol==s && x.A==A), pt)[1].m
+  parse(Float64, filter(x->(x.E==s && x.A==A), pt)[1,:].m_val)
 end
 function _atomicmass(Z::T) where T<:Integer
-    filter(x->x.Z==Z, pt)[1].m
+  parse(Float64, sort(dropmissing(filter(x->x.Z==Z, pt)), :x_val, rev=true)[1,:].m_val)
 end
 function _atomicmass(Z::T, A::T) where T <: Integer
-    filter(x->(x.Z==Z && x.A==A), pt)[1].m
+  parse(Float64, filter(x->(x.Z==Z && x.A==A), pt)[1,:].m_val)
 end
 
 """
     atomicmass(s::T) where T<:AbstractString
 
-Return the mass of the isotope in Dalton.
+Return the mass of the isotope in atomic mass unit (amu).
 
 If mass number is unspecified, return the mass of the most abundant species.
 
@@ -38,6 +40,11 @@ julia> atomicmass("D")
 julia> atomicmass("H")
 1.00782503223
 ```
+
+Newest data is taken from [CIAAW](https://www.ciaaw.org/atomic-masses.htm).
+Please cite 
+> Meng Wang et al., *Chinese Phys. C* **45**, 030003 (2021)
+if the data is used in research.
 """
 function atomicmass(s::T) where T<:AbstractString
     elem=match(r"[[:alpha:]]{1,3}", s)
@@ -55,4 +62,5 @@ function atomicmass(s::T) where T<:AbstractString
 end
 
 export atomicmass
+
 end # module
