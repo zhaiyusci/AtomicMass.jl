@@ -15,11 +15,13 @@ To install it, open your Julia RPLE and type
 
 There is only one exported function in the package.
 
-```julia
+```@repl
 using AtomicMass
-atomicmass("H")   # 1.00782503223
-atomicmass("D")   # 2.01410177812
-atomicmass("H2")  # 2.01410177812
-atomicmass("H-2") # 2.01410177812
+atomicmass("H")
+atomicmass("H2")
+atomicmass("H-2")
+atomicmass("D") 
+atomicmass("p") # Support proton
+atomicmass("e") # and electron
 ```
 

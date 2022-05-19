@@ -1,7 +1,7 @@
 name = "AtomicMass"
 uuid = "2c8f42cb-e0b9-4bc5-96ad-9274ec8d5f21"
 authors = ["Yu Zhai <me@zhaiyusci.net>"]
-version = "0.2.0"
+version = "0.2.1"
 
 [deps]
 CSV = "336ed68f-0bac-5ca0-87d4-7b16caf5d00b"

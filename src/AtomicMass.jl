@@ -7,16 +7,16 @@ pt=DataFrame(CSV.File(srcdir * "/atomicmass.csv",
                       types=[String, Int, String, String, Int, Float64, Float64]));
 
 function _atomicmass(s::T) where T<:AbstractString
-  parse(Float64, sort(dropmissing(filter(x->x.E==s, pt)), :x_val, rev=true)[1,:].m_val)
+    parse(Float64, sort(dropmissing(filter(x->x.E==s, pt)), :x_val, rev=true)[1,:].m_val)
 end
 function _atomicmass(s::T1, A::T2) where {T1<:AbstractString , T2<:Integer}
-  parse(Float64, filter(x->(x.E==s && x.A==A), pt)[1,:].m_val)
+    parse(Float64, filter(x->(x.E==s && x.A==A), pt)[1,:].m_val)
 end
 function _atomicmass(Z::T) where T<:Integer
-  parse(Float64, sort(dropmissing(filter(x->x.Z==Z, pt)), :x_val, rev=true)[1,:].m_val)
+    parse(Float64, sort(dropmissing(filter(x->x.Z==Z, pt)), :x_val, rev=true)[1,:].m_val)
 end
 function _atomicmass(Z::T, A::T) where T <: Integer
-  parse(Float64, filter(x->(x.Z==Z && x.A==A), pt)[1,:].m_val)
+    parse(Float64, filter(x->(x.Z==Z && x.A==A), pt)[1,:].m_val)
 end
 
 """
@@ -47,9 +47,10 @@ Please cite
 if the data is used in research.
 """
 function atomicmass(s::T) where T<:AbstractString
-    elem=match(r"[[:alpha:]]{1,3}", s)
+    elem=match(r"[[:alpha:]]+", s)
     if elem !== nothing
-        name=titlecase(elem.match)
+        #  name=titlecase(elem.match)
+        name=elem.match
         massnumber=match(r"[[:digit:]]{1,3}", s)
         if massnumber !==nothing
             A=parse(Int, massnumber.match)
