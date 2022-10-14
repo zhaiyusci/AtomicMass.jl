@@ -13,7 +13,7 @@ To install it, open your Julia RPLE and type
 
 ## Usage
 
-There is only one exported function in the package.
+There are only two exported functions in the package.
 
 ```@repl
 using AtomicMass
@@ -23,5 +23,8 @@ atomicmass("H-2")
 atomicmass("D") 
 atomicmass("p") # Support proton
 atomicmass("e") # and electron
+
+atomicnumber("H") # returns 1
+atomicnumber("C") # returns 6
 ```
 

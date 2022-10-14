@@ -20,7 +20,7 @@ function _atomicmass(Z::T, A::T) where T <: Integer
 end
 
 """
-    atomicmass(s::T) where T<:AbstractString
+    atomicmass(s::AbstractString)
 
 Return the mass of the isotope in atomic mass unit (amu).
 
@@ -46,7 +46,7 @@ Please cite
 > Meng Wang et al., *Chinese Phys. C* **45**, 030003 (2021)
 if the data is used in research.
 """
-function atomicmass(s::T) where T<:AbstractString
+function atomicmass(s::AbstractString) 
     elem=match(r"[[:alpha:]]+", s)
     if elem !== nothing
         #  name=titlecase(elem.match)
@@ -62,6 +62,20 @@ function atomicmass(s::T) where T<:AbstractString
     return nothing        
 end
 
-export atomicmass
+"""
+    atomicnumber(s::AbstractString)
+
+Return the atomic number of given element.
+"""
+function atomicnumber(s::AbstractString)
+    elem=match(r"[[:alpha:]]+", s)
+    if elem !== nothing
+        name = elem.match
+        return sort(dropmissing(filter(x->x.E==name, pt)), :x_val, rev=true)[1,:].Z
+    end
+    return nothing
+end
+
+export atomicmass, atomicnumber
 
 end # module
